@@ -1,0 +1,851 @@
+@charset "utf-8";
+
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+
+
+body{
+  background-color: #f5f6f7;
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding-top: 30px;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.body-in{
+  overflow-x: hidden;
+}
+
+a{
+	text-decoration: none;
+  color: rgb(109, 102, 114);
+}
+
+.title-box{
+  background-color: #e5ffff;
+  padding-left:40px;
+  height: 150px;
+  border-bottom: 6px solid #c1ffff;
+  box-shadow: -4px 4px 10px 5px rgb(192, 192, 192);
+}
+
+.p-title{
+  position: relative;
+  font-size: 1.8rem;
+  margin: 0;
+  top: -60px;
+  left: 30px;
+  color: rgb(109, 102, 114);
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+.title-back {
+	height: 150px;
+  padding-top: 30px;
+  font-size: 8em;
+  color: #fff; 
+}
+
+.title-back2 {
+  margin-top: 100px;
+  color: #c1ffff;
+  position: relative;
+  top: -250px;
+}
+
+.My_name{
+  position: absolute;
+  top: 120px;
+  left: 80%;
+  font-size: 1.7em;
+  color: rgb(109, 102, 114,.8);
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+.My_img{
+  width: 30%;
+  height: auto;
+  display: flex;
+}
+
+.container{
+	position: relative;
+	z-index: 2;
+}
+
+
+
+/*========= ローディング画面のためのCSS ===============*/
+#splash {
+	position: fixed;
+    top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgb(208, 208, 208);
+	z-index: 9999999;
+	text-align:center;
+	color:#fff;
+}
+
+#splash-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*========= 画面遷移のためのCSS ===============*/
+
+
+/*画面遷移アニメーション*/
+.splashbg{
+  display: none;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .splashbg{
+  display: block;
+  content: "";
+  position:fixed;
+	z-index: 998;
+  transform: scaleX(0);
+	animation-name:PageAnime;
+	animation-duration:1.2s;
+	animation-timing-function:ease-in-out;
+	animation-fill-mode:forwards;
+}
+
+body.appear .splashbg1{
+	width: 93%;
+  height: 150px;
+  top: 30px;
+	left: 7%;
+	background-color: #e5ffff;/*伸びる背景色の設定*/
+}
+
+body.appear .splashbg3{
+	width: 93%;
+  height: 130px;
+  top: 210px;
+	left: 7%;
+	background-color: #ffe5f2;/*伸びる背景色の設定*/
+}
+
+body.appear .splashbg4{
+	width: 93%;
+  height: 130px;
+  top:370px;
+	left: 7%;
+	background-color: #f2e5ff;/*伸びる背景色の設定*/
+}
+
+body.appear .splashbg5{
+	width: 93%;
+    height: 130px;
+    top: 530px;
+	left: 7%;
+	background-color: #e5ffe5;/*伸びる背景色の設定*/
+}
+
+@keyframes PageAnime{
+	0% {
+		transform-origin:left;
+		transform:scaleX(0);
+	}
+	50% {
+		transform-origin:left;
+		transform:scaleX(1);
+	}
+	50.001% {
+		transform-origin:right;
+	}
+	100% {
+		transform-origin:right;
+		transform:scaleX(0);
+	}
+}
+
+/*画面遷移の後現れるコンテンツ設定*/
+.container{
+	opacity: 0;/*はじめは透過0に*/
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .container{
+	animation-name:PageAnimeAppear;
+	animation-duration:1s;
+	animation-delay: 0.8s;
+	animation-fill-mode:forwards;
+	opacity: 0;
+}
+
+@keyframes PageAnimeAppear{
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity: 1;
+  }
+}
+
+
+/*画面遷移アニメーション*/
+.splashbg2{
+    display: none;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .splashbg2{
+  display: block;
+  content: "";
+  position:fixed;
+	z-index: 999;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+	left: 0;
+  transform: scaleX(0);
+  background-color:#ffffe5;/*伸びる背景色の設定*/
+	animation-name:PageAnime2;
+	animation-duration:1.2s;
+	animation-timing-function:ease-in-out;
+	animation-fill-mode:forwards;
+
+}
+
+@keyframes PageAnime2{
+	0% {
+		transform-origin:right;
+		transform:scaleX(0);
+	}
+	50% {
+		transform-origin:right;
+		transform:scaleX(1);
+	}
+	50.001% {
+		transform-origin:left;
+	}
+	100% {
+		transform-origin:left;
+		transform:scaleX(0);
+	}
+}
+
+
+
+
+
+.about-aria{
+	background-color: #f9ffff;
+  margin-top: 60px;
+  margin-left: 8%;
+  margin-right:5%;
+  padding:20px 40px;
+
+  box-shadow: -4px 4px 10px 5px rgb(192, 192, 192,.5);
+  color: rgb(109, 102, 114,.8);
+  z-index: 1;
+
+}
+
+.about-aria dt{
+	font-size: 2em;
+	margin: 40px 0 16px;
+}
+
+.t-box{
+  margin-top: 30px;
+
+
+  padding-left:40px;
+  height: 130px;
+  box-shadow: -4px 4px 10px 5px rgb(192, 192, 192);
+}
+
+.t-title{
+  position: relative;
+  font-size: 1.6rem;
+  color: rgb(109, 102, 114);
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+.t-back {
+height: 130px;
+  padding: 30px 0;
+  font-size: 6em;
+  color: #fff; 
+}
+
+.t-back2 {
+  position: relative;
+}
+
+.web-site-box{
+	background-color: #ffe5f2;
+  border-bottom: 6px solid #ffc1e0;
+  margin-left: 1%;
+
+}
+
+.web-site-title{
+  position: relative;
+  font-size: 1.8rem;
+  margin: 0;
+  top: -60px;
+  left: 30px;
+  color: rgb(109, 102, 114);
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+.web-site-back2 {
+  margin: 100px 0;
+  color: #ffc1e0;
+  top: -214px;
+}
+
+.web-site-title{
+	top: -40px;
+}
+
+.logo-box{
+  margin-left: 2%;
+  background-color: #f2e5ff;
+  border-bottom: 6px solid #e0c1ff;
+}
+
+.logo-title{
+  position: relative;
+  font-size: 1.8rem;
+  margin: 0;
+  top: -60px;
+  left: 30px;
+  color: rgb(109, 102, 114);
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+.logo-back{
+  white-space: nowrap;
+}
+
+.logo-back2 {
+  margin: 100px 0;
+  color: #e0c1ff;
+  top: -214px;
+  white-space: nowrap;
+}
+
+.logo-title{
+	top: -40px;
+}
+
+.contact-box{
+  margin-left: 3%;
+  background-color: #e5ffe5;
+  border-bottom: 6px solid #c1ffc1;
+}
+
+.contact-title{
+  position: relative;
+  font-size: 1.8rem;
+  margin: 0;
+  top: -60px;
+  left: 30px;
+  color: rgb(109, 102, 114);
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+.contact-back2 {
+  margin: 100px 0;
+  color: #c1ffc1;
+  top: -214px;
+}
+
+.contact-title{
+	top: -40px;
+}
+
+
+/*アコーディオン全体*/
+.accordion-area{
+    list-style: none;
+}
+
+/*アコーディオンタイトル*/
+.title {
+    width: 96%;
+    margin-left: auto;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+/*アコーディオンで現れるエリア*/
+.box {
+    display: none;/*はじめは非表示*/
+    
+}
+
+.title.close{
+    width: 100%;
+}
+
+.web-site-aria{
+	background-color: #fff9fc;
+  margin-top: 60px;
+  margin-left: 8%;
+  margin-right:5%;
+  margin-bottom: 60px;
+  padding:20px 40px;
+  box-shadow: -4px 4px 10px 5px rgb(192, 192, 192,.5);
+  color: rgb(109, 102, 114,.8);
+  z-index: 1;
+
+}
+
+.web-site-flex{
+  display: flex;
+  justify-content: space-around;
+}
+
+.web-site-aria-box{
+  margin:30px 0;
+  flex-basis: 48%;
+  color: rgb(109, 102, 114,.8);
+  background: #ffeff7;
+  border: 2px solid rgb(192, 192, 192,.5);
+  box-shadow: -4px 4px 10px 1px rgb(192, 192, 192,.5);
+}
+
+.web-site-aria-box a{
+  padding: 28px;
+  display: block;
+}
+
+.web-site-aria-box img{
+  max-width: 100%;
+  opacity: .8;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+.web-site-aria-box dt{
+  font-size: 1.8em;
+  margin: 30px 0;
+}
+
+.web-site-aria-box dd{
+  margin: 20px 0;
+}
+
+.logo-aria{
+	background-color: #fcf9ff;
+  margin-top: 60px;
+  margin-left: 8%;
+  margin-right:5%;
+  margin-bottom: 60px;
+  padding:20px 40px;
+  box-shadow: -4px 4px 10px 5px rgb(192, 192, 192,.5);
+  color: rgb(109, 102, 114,.8);
+  z-index: 1;
+
+}
+
+
+.logo-flex{
+  display: flex;
+  justify-content: space-around;
+}
+
+.logo-aria-box{
+  margin:30px 0;
+  flex-basis: 48%;
+  color: rgb(109, 102, 114,.8);
+  background: #f7efff;
+  border: 2px solid rgb(192, 192, 192,.5);
+  box-shadow: -4px 4px 10px 1px rgb(192, 192, 192,.5);
+  padding: 28px;
+}
+
+.logo-aria-box img{
+  max-width: 100%;
+  opacity: .8;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+.logo-aria-box dt{
+  font-size: 1.8em;
+  margin: 30px 0;
+}
+
+.logo-aria-box dd{
+  margin: 20px 0;
+}
+
+.contact-aria{
+	background-color: #f9fff9;
+  margin-top: 60px;
+  margin-left: 8%;
+  margin-right:5%;
+  margin-bottom: 60px;
+  padding:20px 40px;
+  box-shadow: -4px 4px 10px 5px rgb(192, 192, 192,.5);
+  color: rgb(109, 102, 114,.8);
+  z-index: 1;
+}
+
+.info-box{
+  width: 640px;
+  max-width: 100%;
+  padding: 24px 20px;
+  margin: 0 auto ;
+}
+
+.form-item{
+  margin-bottom: 24px;
+}
+
+.form-item dt{
+  margin-bottom: 12px;
+}
+
+.form-item dt:before{
+  content: "■";
+  color: rgb(109, 102, 114);
+  margin-right: 4px;
+}
+
+input[type="text"], [type="email"], textarea{
+  width: 100%;
+}
+
+.form-item dd{
+  margin: 0;
+
+}
+
+textarea{
+  height: 100px;
+}
+
+input[type="text"], [type="email"],  textarea{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-submit{
+  text-align: center;
+  margin: 46px 0 16px;
+}
+
+input[type="submit"]{
+  background: #c1ffc1;
+  width: 200px;
+  padding: .5em;
+  border-radius: 4px;
+  border: 1px solid #2f4858;
+  color: #2f4858;
+}
+
+input[type="submit"]:hover{
+  background: #9eff9e;
+}
+
+.page-top a,.page-top2 a{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  text-align: center;
+  text-transform: uppercase; 
+  transition:all 0.3s;
+}
+
+.page-top a img,.page-top2 a img{
+	width: 60px;
+	height: 60px;
+}
+
+.page-top,.page-top2{
+  position: fixed;
+	right: 10px;
+	bottom:10px;
+	z-index: 2;
+    /* はじめは非表示 */
+	opacity: 0;
+	transform: translateY(100px);
+}
+
+.page-top.UpMove,.page-top2.UpMove{
+	animation: UpAnime 0.5s forwards;
+}
+
+@keyframes UpAnime{
+  from {
+    opacity: 0;
+	transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+	transform: translateY(0);
+  }
+}
+
+/*　下に下がる動き　*/
+.page-top.DownMove,.page-top2.DownMove{
+	animation: DownAnime 0.5s forwards;
+}
+@keyframes DownAnime{
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(100px);
+  }
+}
+
+
+small{
+  background:rgb(255, 255, 255);
+  color:rgb(109, 102, 114);
+  display: block;
+  text-align: center;
+  padding:10px;
+}
+
+  #footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+  @media screen and (max-width:767px) {
+
+  body{
+    overflow-x: hidden;
+  }
+
+
+  .title-box{
+    
+    
+    height: 80px;
+    padding-left:10px;
+  }
+
+  .p-title{
+
+    font-size: 1.2rem;
+
+    top: -28px;
+    left: 0px;
+  }
+
+  .title-back {
+    height: 0px;
+    font-size: 3em;
+    color: #fff; 
+  }
+    
+  .title-back2 {
+    margin-top: 192px;
+
+  }
+
+  .My_name{
+    position: relative;
+    top: 34px;
+    left: 75%;
+    font-size: 1em;
+    }
+
+  body.appear .splashbg1{
+    width: 96%;
+    height: 80px;
+  }
+
+  body.appear .splashbg3{
+    width: 96%;
+    height: 70px;
+    top: 140px;
+  }
+
+  body.appear .splashbg4{
+    width: 96%;
+    height: 70px;
+    top:240px;
+  }
+
+  body.appear .splashbg5{
+    width: 96%;
+    height: 70px;
+    top: 340px;
+  }
+
+  .about-aria{
+    margin-top: 30px;
+    margin-left: 5%;
+    padding:8px 20px;
+  }
+
+  .about-aria dt{
+    font-size: 1.2em;
+    margin: 28px 0 10px;
+  }
+
+  .t-box{
+    margin-top: 30px;
+    padding-left:10px;
+    height: 70px;
+  }
+
+  .t-title{
+    top: -30px;
+    left: 0;
+    font-size: 1.2rem;
+  }
+
+  .t-back {
+    height: 0px;
+    padding: 20px 0;
+    font-size: 3em;
+  }
+
+  .t-back2 {
+    top: -158px;
+  }
+
+  .web-site-flex{
+    display: block;
+  }
+
+  .web-site-aria{
+    
+    margin-top: 30px;
+    margin-left: 5%;
+    padding:8px 20px;
+  }
+
+  .web-site-aria-box{
+    margin:30px auto;
+    width: 100%;
+  }
+
+  .web-site-aria-box img{
+    max-width: 100%;
+
+  }
+
+  .web-site-aria-box dt{
+    font-size: 1.6em;
+    margin: 20px 0;
+  }
+
+  .web-site-aria-box dd{
+    margin: 20px 0;
+  }
+
+  .logo-aria{
+    margin-top: 30px;
+    margin-left: 5%;
+    padding:8px 20px;
+  }
+
+  .logo-flex{
+    display: block;
+  }
+
+  .logo-aria-box{
+    margin:30px auto;
+  }
+
+  .logo-aria-box dt{
+    font-size: 1.6em;
+    margin: 20px 0;
+  }
+
+  .logo-aria-box dd{
+  margin: 20px 0;
+  }
+
+  .contact-aria{
+    margin-top: 30px;
+    margin-left: 5%;
+    padding:8px 20px;
+  }
+
+  .info-box{
+    margin:30px auto;
+    width: 100%;
+  }
+
+  .form-item{
+    margin-bottom: 24px;
+  }
+
+  .form-item dt{
+    margin-bottom: 12px;
+  }
+
+  .form-item dt:before{
+    content: "■";
+    color: rgb(109, 102, 114);
+    margin-right: 4px;
+  }
+
+  input[type="text"], [type="email"], textarea{
+    width: 100%;
+  }
+
+  .form-item dd{
+    margin: 0;
+
+  }
+
+  textarea{
+    height: 100px;
+  }
+
+  input[type="text"], [type="email"],  textarea{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .form-submit{
+    text-align: center;
+    margin: 46px 0 16px;
+  }
+
+  input[type="submit"]{
+    background: #c1ffc1;
+    width: 200px;
+    padding: .5em;
+    border-radius: 4px;
+    border: 1px solid #2f4858;
+    color: #2f4858;
+  }
+
+  input[type="submit"]:hover{
+    background: #9eff9e;
+  }
+
+}
+
+@media screen and (min-width:768px) {
+    
+  .title:hover{
+    width: 98%;
+  }
+
+  .web-site-aria-box a:hover{
+    opacity: .9;
+  }
+
+  .page-top a:hover,.page-top2 a:hover{
+    opacity: .7;
+  }
+
+}
